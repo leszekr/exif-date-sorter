@@ -26,7 +26,7 @@ class ExifDateSorter
     if date.nil?
       "."
     else
-      "#{@target}/#{date.year}/#{'%02d' % date.month}"
+      "#{@target}/#{date.year}/#{'%02d' % date.month}/#{'%02d' % date.mday}"
     end
   end
 end
