@@ -24,9 +24,9 @@ class ExifDateSorter
   def dir(image)
     date = date(image)
     if date.nil?
-      "."
+      "#{@target}"
     else
-      "#{@target}/#{date.year}/#{'%02d' % date.month}/#{'%02d' % date.mday}"
+      "#{@target}/#{date.year}/#{'%02d' % date.month}"
     end
   end
 end
