@@ -4,16 +4,18 @@ require "exifr"
 require "fileutils"
 
 class ExifDateSorter
-  def initialize(source, target)
-    @source = source
-    @target = target
+  def initialize(source=false, target=false)
+    @source = source || Dir.pwd
+    @target = target || Dir.pwd
   end
 
   def move
     Dir[@source + '/**/*.{jpg,JPG}'].each do |image|
       target_dir = dir(image)
       FileUtils.mkdir_p(target_dir) unless File.directory? target_dir
-      FileUtils.move image, target_dir
+      if File.dirname(image) != target_dir
+        FileUtils.move image, target_dir
+      end
     end
   end
 
